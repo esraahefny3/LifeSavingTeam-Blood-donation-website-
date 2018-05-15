@@ -1,0 +1,86 @@
+
+#head{
+	background: #009688;
+	width: 80%;
+	 height:20%;
+
+	 position: absolute;
+	 top: 2%;
+	 left: 7%;
+
+}
+
+#head2{
+	background: #009688;
+	width: 80%;
+	 height:10%;
+
+	 position: absolute;
+	 top: 140%;
+	 left: 7%;
+
+}
+#head3{
+	background: #009688;
+	width: 1%;
+	 height:140%;
+
+	 position: absolute;
+	 top: 2%;
+	 left: 7%;
+
+}
+#head4{
+	background: #009688;
+	width: 1%;
+	 height:140%;
+
+	 position: absolute;
+	 top: 2%;
+	 left: 86%;
+
+}
+#register{
+	width: 100%;
+	 height:28%;
+	 color: white;
+	 position: absolute;
+	 top: 5%;
+	 left: 15%;
+}
+#first_block{
+	height: 90%;
+	width: 30%;
+position: absolute;
+	 top: 20%;
+	  left: 10%;
+
+
+	
+
+}
+#second_block{
+	height: 90%;
+	width: 30%;
+position: absolute;
+	 top: 20%;
+	 left: 50%;
+	
+
+}
+#register_btn{
+position: absolute;
+left: 33%;
+top: 128%;
+width: 9%;
+
+}
+#log_in_btn{
+
+width: 9%;
+position: absolute;
+left: 48%;
+top: 128%;
+
+
+}

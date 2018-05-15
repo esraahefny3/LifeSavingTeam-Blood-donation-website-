@@ -1,0 +1,30 @@
+#navbar{
+
+  background: #009688;
+  width: 100%;
+}
+#search{
+
+  margin-left: 5%;
+}
+#search input{
+  width:400px;
+}
+#l{
+
+  margin-left: 250px;
+  color: white;
+}
+#l a{
+  color: white;
+}
+
+.form-group select {
+    
+    width: 120px !important;
+    height: 50px !important;
+    display: inline-block;
+}
+.noscroll {
+    overflow: hidden;
+}

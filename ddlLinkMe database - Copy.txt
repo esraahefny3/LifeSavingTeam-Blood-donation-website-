@@ -1,0 +1,131 @@
+CREATE DATABASE linkMe default character set utf8 default collate utf8_unicode_ci;
+
+use linkMe;
+create table member(
+member_id int primary key AUTO_INCREMENT,
+first_name varchar(30) not null,
+last_name varchar (30) ,
+full_name varchar(80) not null,
+password varchar(20) not NULL,
+email varchar(50) unique not null,
+phone_number varchar(11) ,
+gender varchar(6) not null,
+birth_date varchar(20) ,
+home_town varchar (50) ,
+marital_status varchar(20),
+logged_in int,
+about_me text,
+profile_pic varchar(300) default "NULL",
+friend_array text
+);
+
+use linkMe;
+create table friend_requests(
+id int AUTO_INCREMENT,
+user_from int not null,
+user_to int not null,
+primary key(id,user_from,user_to)
+);
+
+use linkMe;
+create table friendship(
+friend1 int not null,
+friend2 int not null,
+date_added timestamp,
+primary key(friend1,friend2)
+);
+
+
+use linkMe;
+create table family (
+member_id int  ,
+friend_id int ,
+relation_type text,
+primary key(member_id,friend_id)
+);
+
+use linkMe;
+create table posts(
+post_number int primary key AUTO_INCREMENT,
+poster_member_id int not null ,
+profile_member_id int not null ,
+caption text ,
+post_pic text not null,
+public_private int not null,
+poster_name varchar (100),
+post_date int not null
+);
+
+use linkMe;
+create table likes(
+post_number int primary key,
+liker_id int not null ,
+liker_name text not null 
+);
+use linkMe;
+create table ourdata(
+name varchar (100)not null,
+number varchar(20) primary key,
+blood_type varchar(3),
+available int ,
+gender varchar(6) not null default 'male',
+member_id int
+)DEFAULT CHARACTER SET utf8;
+
+create table donation_dates(
+last_donation_date int,
+storing_time_date int,
+member_id int,
+number varchar(20) not null,
+primary key (last_donation_date,number)
+)DEFAULT CHARACTER SET utf8;
+
+create table donator_comments(
+number varchar(20) not null,
+comment text ,
+member_id int,
+storing_comment_time_date int,
+primary key (storing_comment_time_date,number)
+
+)DEFAULT CHARACTER SET utf8;
+
+create table operations(
+patient_name varchar(100) not null,
+national_id_of_patient varchar(20),
+add_time int,
+responsor_name varchar(100) not null,
+number_of_responsor varchar(20) not null,
+report_of_patient text not null,
+hospital text,
+report_of_requirements text not null,
+patient_gender varchar(6) not null default 'male',
+patient_blood_type varchar(3),
+primary key (national_id_of_patient,add_time)
+
+)DEFAULT CHARACTER SET utf8;
+
+create table operations_donators(
+national_id_of_patient varchar(20) ,
+national_id_of_donator varchar(20) ,
+add_time int,
+donator_name varchar(200) not null,
+donator_blood_type varchar(3),
+donator_number varchar(20) not null,
+donator_gender varchar(6) not null default 'male',
+primary key (national_id_of_patient,national_id_of_donator,add_time)
+
+)DEFAULT CHARACTER SET utf8;
+
+ALTER TABLE posts add foreign key (poster_member_id) REFERENCES member(member_id);
+ALTER TABLE posts add foreign key (profile_member_id) REFERENCES member(member_id);
+ALTER TABLE likes add foreign key (post_number) REFERENCES posts(post_number);
+
+ALTER TABLE friend_requests add foreign key (user_from) REFERENCES member(member_id);
+ALTER TABLE friend_requests add foreign key (user_to) REFERENCES member(member_id);
+
+ALTER TABLE friendship add foreign key (friend1) REFERENCES member(member_id);
+ALTER TABLE friendship add foreign key (friend2) REFERENCES member(member_id);
+
+ALTER TABLE donation_dates add foreign key (number) REFERENCES ourdata(number) on delete cascade;
+
+ALTER TABLE donator_comments add foreign key (number) REFERENCES ourdata(number) on delete cascade;
